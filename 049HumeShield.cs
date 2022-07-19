@@ -9,9 +9,9 @@ namespace _049HumeShield
         internal static _049HumeShield Instance;
 
         public override Version RequiredExiledVersion { get; } = new Version(5, 2, 1);
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 0, 1);
 
-        public override string Name { get; } = "Alpha Zombie";
+        public override string Name { get; } = "049 Hume Shield";
         public override string Author { get; } = "TeamEXAngus#5525";
 
         private Handlers.Spawning spawning;
