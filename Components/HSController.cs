@@ -8,27 +8,15 @@ namespace _049HumeShield.Components
     {
         private static Config Configs => _049HumeShield.Instance.Config;
 
-        private Player Player;
-        private AhpStat.AhpProcess HumeShieldProcess;
-        internal float TimeSinceTakenDamage = 0;
+        internal AhpStat.AhpProcess HumeShieldProcess;
 
         public void Awake()
         {
-            Player = Player.Get(gameObject);
+            Player Player = Player.Get(gameObject);
 
             HumeShieldProcess = Player.ReferenceHub.playerStats.GetModule<AhpStat>()
                 .ServerAddProcess(Configs.MaxHumeShield, Configs.MaxHumeShield,
-                decay: 0, efficacy: 1, sustain: 0, persistant: true);
-        }
-
-        public void Update()
-        {
-            TimeSinceTakenDamage += Time.deltaTime;
-
-            if (TimeSinceTakenDamage > Configs.HumeShieldRegenDelay && HumeShieldProcess.CurrentAmount < Configs.MaxHumeShield)
-            {
-                HumeShieldProcess.CurrentAmount += Configs.HumeShieldRegenPerSecond * Time.deltaTime;
-            }
+                decay: -Configs.HumeShieldRegenPerSecond, efficacy: 1, sustain: 0, persistant: true);
         }
     }
 }
