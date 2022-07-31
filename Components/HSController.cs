@@ -18,17 +18,7 @@ namespace _049HumeShield.Components
 
             HumeShieldProcess = Player.ReferenceHub.playerStats.GetModule<AhpStat>()
                 .ServerAddProcess(Configs.MaxHumeShield, Configs.MaxHumeShield,
-                decay: 0, efficacy: 1, sustain: 0, persistant: true);
-        }
-
-        public void Update()
-        {
-            TimeSinceTakenDamage += Time.deltaTime;
-
-            if (TimeSinceTakenDamage > Configs.HumeShieldRegenDelay && HumeShieldProcess.CurrentAmount < Configs.MaxHumeShield)
-            {
-                HumeShieldProcess.CurrentAmount += Configs.HumeShieldRegenPerSecond * Time.deltaTime;
-            }
+                decay: -Configs.HumeShieldRegenPerSecond, efficacy: 1, sustain: 0, persistant: true);
         }
     }
 }
