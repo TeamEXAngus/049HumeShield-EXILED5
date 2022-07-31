@@ -1,7 +1,6 @@
-﻿using Exiled.API.Features;
+using Exiled.API.Features;
 using PlayerStatsSystem;
 using UnityEngine;
-
 namespace _049HumeShield.Components
 {
     internal class HSController : MonoBehaviour
